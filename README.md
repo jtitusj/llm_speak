@@ -28,7 +28,7 @@ This is a fun side project that still delivers real work value.
 ### 1) Clone the repo
 
 ```bash
-git clone https://github.com/<your-username>/llm_speak.git
+git clone https://github.com/jtitusj/llm_speak.git
 cd llm_speak
 ```
 
@@ -40,18 +40,16 @@ Open the repo as workspace/context in your preferred assistant.
 
 Start with:
 
-- `prompts/system.md`
-- `prompts/rewrite.md`
-- `prompts/presets.md`
-- `skills/README.md` (task-specific overlays)
+- `START_HERE.md` (single-file setup)
 
-Then paste your raw message and specify tone + audience.
+Then paste your raw message and specify mode + audience.
 
 ## File Layout
 
 ```text
 .
 ├── README.md
+├── START_HERE.md
 ├── TODO.md
 ├── docs
 │   └── advanced-orchestration.md
@@ -83,7 +81,12 @@ yeah youre right i messed this up
 Prompt instruction:
 
 ```text
-Use the "diplomatic" preset. Audience: manager. Goal: admit fault professionally.
+Load START_HERE.md.
+Audience: manager
+Mode: apology-safe
+Skill: admit-fault
+Goal: admit fault professionally
+Message: yeah youre right i messed this up
 ```
 
 Output:
@@ -110,7 +113,9 @@ Default mode is `balanced` if none is specified.
 
 ## Sub-Skills
 
-For focused use cases, layer one skill file with your system prompt:
+For focused use cases, `START_HERE.md` already includes sub-skill logic.
+
+If you want deeper customization, use:
 
 - `skills/admit-fault.md`
 - `skills/pushback.md`
@@ -118,12 +123,13 @@ For focused use cases, layer one skill file with your system prompt:
 - `skills/status-update.md`
 - `skills/client-safe.md`
 
-This gives consistent structure for the most common workplace messages.
+This gives expanded rules for the same common workplace message types.
 
 ## Customization
 
 Edit the markdown prompts directly:
 
+- tune defaults in `START_HERE.md`
 - add/remove tone presets in `prompts/presets.md`
 - tighten rewrite rules in `prompts/system.md`
 - add your company voice notes in `prompts/rewrite.md`
